@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Slack Sample</title>
+</head>
+<body>
+    <a href="#" class="slack-submit">Post to Slack!</a>
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        $(function () {
+            $('.slack-submit').on('click', function () {
+            var url = 'https://slack.com/api/chat.postMessage';
+            var user = '@mana.test';
+            var message = 'Hello Slack!test';
+                var data = {
+                    token: 'xoxp-217894464821-218653516966-219735940577-521dce22bbd7af62d1e37f1dadc0d012',
+                    channel: user,
+                    username: 'github_dm',
+                    text: message
+                };
+
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: data,
+                    success: function (data) {
+                        alert( 'Can I post to Slack? :' + data.ok );
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
